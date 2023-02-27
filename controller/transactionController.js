@@ -40,15 +40,12 @@ const getAllTransactions = async (req, res) => {
     },
   ]);
 
-  console.log(stats);
-  res
-    .status(StatusCodes.OK)
-    .json({
-      balance: stats.balance,
-      income: stats.income,
-      expense: stats.expense,
-      transactions,
-    });
+  res.status(StatusCodes.OK).json({
+    balance: stats.balance,
+    income: stats.income,
+    expense: stats.expense,
+    transactions,
+  });
 };
 
 const deleteTransaction = async (req, res) => {
