@@ -3,6 +3,7 @@ require("express-async-errors");
 
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const { connect, set } = require("mongoose");
 const fileUpload = require("express-fileupload");
 const cloudinary = require("cloudinary").v2;
@@ -14,6 +15,7 @@ cloudinary.config({
 
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
+app.use(cors());
 
 // Router
 const authRouter = require("./routes/authRoute");

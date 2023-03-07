@@ -1,0 +1,36 @@
+.sign-up {
+    @apply flex justify-center items-center;
+}
+
+.sign-up .card {
+    @apply mt-12;
+}
+
+.sign-up .card h3 {
+    @apply text-lg text-center tracking-wider;
+}
+
+.sign-up .card .fields label {
+    @apply block my-3
+}
+
+.sign-up .card .fields input {
+    @apply w-full outline-none border-black border-b-2 px-2 focus-within:border-secondary;
+}
+
+.sign-up .card .footer .submit, 
+.sign-up .card .footer .demo {
+    @apply block w-full my-4 border rounded-md p-2 hover:drop-shadow-lg;
+}
+
+.sign-up .card .footer .submit {
+    @apply bg-blue-300;
+}
+
+.sign-up .card .footer .demo {
+    @apply bg-green-300;
+}
+
+.sign-up .card .footer .que button {
+    @apply underline text-gray-500 hover:text-blue-600;
+}

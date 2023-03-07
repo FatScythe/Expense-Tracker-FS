@@ -31,7 +31,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Quicksand", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       height: {
         xs: "2px",

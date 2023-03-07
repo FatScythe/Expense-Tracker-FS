@@ -1,0 +1,22 @@
+nav {
+    @apply bg-dark3 text-light p-3;
+}
+
+nav a {
+    @apply w-fit font-semibold text-lg tracking-wide;
+}
+ 
+nav div {
+    @apply flex justify-between items-center;
+}
+
+nav div.user-nav {
+    @apply flex justify-between items-center gap-4;
+}
+
+nav div.user-nav img {
+    @apply w-10 h-10 rounded-full object-contain cursor-pointer;
+}
+
+
+
