@@ -29,7 +29,7 @@ const UserProvider = ({ children }) => {
   );
 };
 
-export const useUserProvider = () => {
+export const useUserContext = () => {
   return useContext(userContext);
 };
 

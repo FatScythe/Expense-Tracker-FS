@@ -1,10 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// CSS
 import "./signup.css";
-import { useUserProvider } from "../../context/userContext";
-import Post from "../../hooks/usePost";
+// Context
+import { useUserContext } from "../../context/userContext";
+import { useUiContext } from "../../context/uiContext";
+// hooks
+import Post from "../../hooks/Post";
 
 const SignUp = () => {
-  const { addUserToLocalStorage } = useUserProvider();
+  const { addUserToLocalStorage, removeUserFromLocalStorage } =
+    useUserContext();
+  const { setIsLoggedIn } = useUiContext();
+  const navigate = useNavigate();
   const initialValues = {
     name: "",
     email: "",
@@ -18,56 +26,38 @@ const SignUp = () => {
   };
 
   const handleSubmit = async (e) => {
-    // try {
-    // } catch (error) {}
     e.preventDefault();
     const { name, email, password, isMember } = values;
     if (!email || !password || (!isMember && !name)) {
       alert("Please fill all field");
       return;
     }
-
     // LOGIN
-
     if (isMember) {
-      const result = Post("http://localhost:5000/api/v1/auth/login", {
-        email: values.email,
-        password: values.password,
-      });
-      // const post = await fetch(`http://localhost:5000/api/v1/auth/login`, {
-      //   method: "POST",
-      //   headers: { "content-type": "application/json" },
-      //   body: JSON.stringify({
-      //     email: values.email,
-      //     password: values.password,
-      //   }),
-      // });
-
-      // const result = await post.json();
-      addUserToLocalStorage(result);
-      // if (!post.ok) {
-      //   alert(result.msg);
-      // }
+      const { response, pending, error } = await Post(
+        "http://localhost:5000/api/v1/auth/login",
+        {
+          email: values.email,
+          password: values.password,
+        }
+      );
+      // addUserToLocalStorage(response);
+      // setIsLoggedIn(true);
+      // navigate("/");
+      console.log(response, pending, error);
       return;
     }
 
     // REGISTER
-
-    const post = await fetch(`http://localhost:5000/api/v1/auth/register`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
+    const { response, pending, error } = await Post(
+      "http://localhost:5000/api/v1/auth/register",
+      {
         name: values.name,
         email: values.email,
         password: values.password,
-      }),
-    });
-
-    const result = await post.json();
-    if (!post.ok) {
-      alert(result.msg);
-    }
-    console.log(result);
+      }
+    );
+    removeUserFromLocalStorage();
   };
 
   return (
@@ -105,9 +95,22 @@ const SignUp = () => {
 
         <div className='footer'>
           <button className='submit' type='submit' onClick={handleSubmit}>
-            Submit
+            {values.isMember ? "Login" : "Register"}
           </button>
-          <button className='demo'>Demo User</button>
+          {values.isMember && (
+            <button
+              className='demo'
+              onClick={() => {
+                setValues({
+                  ...values,
+                  email: "testUser@gmail.com",
+                  password: "tester",
+                });
+              }}
+            >
+              Demo User
+            </button>
+          )}
 
           <p className='que'>
             <span>
