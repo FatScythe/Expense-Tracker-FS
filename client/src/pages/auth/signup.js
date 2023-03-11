@@ -6,7 +6,8 @@ import "./signup.css";
 import { useUserContext } from "../../context/userContext";
 import { useUiContext } from "../../context/uiContext";
 // hooks
-import Post from "../../hooks/Post";
+// // import usePost from "../../hooks/Post";
+// import { getPost } from "../../hooks/Post";
 
 const SignUp = () => {
   const { addUserToLocalStorage, removeUserFromLocalStorage } =
@@ -34,29 +35,41 @@ const SignUp = () => {
     }
     // LOGIN
     if (isMember) {
-      const { response, pending, error } = await Post(
-        "http://localhost:5000/api/v1/auth/login",
-        {
+      const post = await fetch("http://localhost:5000/api/v1/auth/login", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
           email: values.email,
           password: values.password,
-        }
-      );
-      // addUserToLocalStorage(response);
-      // setIsLoggedIn(true);
-      // navigate("/");
-      console.log(response, pending, error);
+        }),
+      });
+      const response = await post.json();
+      if (!post.ok) {
+        // Alert here
+        alert(response.msg);
+      }
+      addUserToLocalStorage(response);
+      setIsLoggedIn(true);
+      navigate("/");
       return;
     }
 
     // REGISTER
-    const { response, pending, error } = await Post(
-      "http://localhost:5000/api/v1/auth/register",
-      {
+    const post = await fetch("http://localhost:5000/api/v1/auth/register", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
         name: values.name,
         email: values.email,
         password: values.password,
-      }
-    );
+      }),
+    });
+
+    const response = await post.json();
+    if (!post.ok) {
+      // Alert here
+      alert(response.msg);
+    }
     removeUserFromLocalStorage();
   };
 

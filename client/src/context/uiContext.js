@@ -9,6 +9,7 @@ const UiProvider = ({ children }) => {
     if (getUserFromLocalStorage() === null) {
       return false;
     }
+    if (getUserFromLocalStorage().msg) return false;
     if (
       getUserFromLocalStorage().user.name &&
       getUserFromLocalStorage().user.token
