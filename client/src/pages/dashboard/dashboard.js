@@ -59,8 +59,32 @@ const Dashboard = () => {
         </div>
 
         <History />
+        <Input />
       </main>
     </>
+  );
+};
+
+const Input = () => {
+  return (
+    <form className='input text-black'>
+      <div className='name'>
+        <label htmlFor='name'>NAME</label>
+        <input type='text' />
+      </div>
+
+      <div className='amount'>
+        <label htmlFor='amount'>AMOUNT</label>
+        <input type='number' />
+      </div>
+
+      <div className='date'>
+        <label htmlFor='date'>DATE</label>
+        <input type='date' />
+      </div>
+
+      <button>ADD</button>
+    </form>
   );
 };
 

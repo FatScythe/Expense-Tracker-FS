@@ -6,12 +6,14 @@ const Navbar = () => {
   const { isLoggedIn } = useUiContext();
 
   return (
-    <nav>
-      <div className='container'>
-        <a href='/'>Expense Tracker</a>
-        {isLoggedIn && <User />}
-      </div>
-    </nav>
+    <div className='top-nav'>
+      <nav>
+        <div className='container'>
+          <a href='/'>Expense Tracker</a>
+          {isLoggedIn && <User />}
+        </div>
+      </nav>
+    </div>
   );
 };
 

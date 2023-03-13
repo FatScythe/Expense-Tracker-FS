@@ -1,5 +1,9 @@
+div.top-nav {
+    @apply relative;
+}
+
 nav {
-    @apply bg-dark3 text-light p-3;
+    @apply bg-dark3 text-light p-3 w-full top-0 left-0 fixed z-10;
 }
 
 nav a {

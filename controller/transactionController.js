@@ -28,6 +28,13 @@ const getAllTransactions = async (req, res) => {
     createdBy: req.user.userId,
   });
 
+  if (transactions.length === 0) {
+    res
+      .status(StatusCodes.OK)
+      .json({ balance: 0, income: 0, expense: 0, transactions });
+    return;
+  }
+
   const [stats] = await Transaction.aggregate([
     { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
     {
@@ -62,8 +69,21 @@ const deleteTransaction = async (req, res) => {
   });
 };
 
+const clearAllTransaction = async (req, res) => {
+  const {
+    user: { userId },
+  } = req;
+
+  const transaction = await Transaction.deleteMany({
+    createdBy: userId,
+  });
+
+  res.status(StatusCodes.OK).json({ msg: "Deleted All" });
+};
+
 module.exports = {
   addTransaction,
   getAllTransactions,
   deleteTransaction,
+  clearAllTransaction,
 };

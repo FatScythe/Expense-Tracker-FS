@@ -1,15 +1,13 @@
 main.dashboard {
-    @apply max-w-full md:max-w-md mx-auto   text-white;
+    @apply max-w-full md:max-w-md mx-auto text-white mt-24 mb-12;
 }
 
 main.dashboard .stats {
     @apply bg-dark2 p-3 pb-4 rounded-md mt-9;
 }
 
-
-
 .dashboard .balance h3 {
-@apply text-sm;
+    @apply text-sm;
 }
 
 .dashboard .balance .cash, .dashboard .inc-exp {
@@ -32,4 +30,54 @@ main.dashboard .stats {
     @apply -rotate-180;
 }
 
+.dashboard .history {
+    @apply px-3 text-black my-4;
+} 
+
+.dashboard .history .title {
+    @apply flex justify-between items-center;
+}
+
+.dashboard .history .title h2 span {
+    @apply font-bold text-base;
+}
+
+.dashboard .history .title h2 button {
+    @apply text-red-500 hover:text-red-600;
+}
+
+.dashboard .history .item,
+.dashboard .history .item p {
+    @apply flex justify-between items-center;
+}
+
+.dashboard .history .item {
+    @apply my-2 cursor-pointer bg-slate-200 hover:bg-slate-300 drop-shadow-sm p-3 hover:translate-x-1 hover:translate-y-1 transition-all rounded-md;
+}
+
+.dashboard .history .item h2 {
+    @apply flex justify-between flex-col items-start gap-2;
+}
+
+.dashboard .input {
+    @apply my-2;
+}
+
+.dashboard .input .name,
+.dashboard .input .amount,
+.dashboard .input .date {
+    @apply mt-6 
+}
+
+.dashboard .input label {
+    @apply block mb-2 font-semibold;
+}
+
+.dashboard .input input {
+    @apply w-full border-0 outline-none border-b border-b-slate-400 focus:border-b-black;
+}
+
+.dashboard .input button {
+    @apply w-full text-white bg-secondary my-6 p-3 hover:opacity-80 transition-all;
+}
 
