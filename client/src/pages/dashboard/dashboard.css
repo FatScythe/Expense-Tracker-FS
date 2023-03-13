@@ -1,0 +1,35 @@
+main.dashboard {
+    @apply max-w-full md:max-w-md mx-auto   text-white;
+}
+
+main.dashboard .stats {
+    @apply bg-dark2 p-3 pb-4 rounded-md mt-9;
+}
+
+
+
+.dashboard .balance h3 {
+@apply text-sm;
+}
+
+.dashboard .balance .cash, .dashboard .inc-exp {
+    @apply flex justify-between items-center;
+}
+
+.dashboard .balance .cash p {
+    @apply text-xl;
+}
+.dashboard .inc-exp {
+    @apply mt-5;
+}
+
+.dashboard .inc-exp .inc h2,
+.dashboard .inc-exp .exp h2 {
+    @apply text-lg ml-1.5;
+}
+
+.dashboard .inc-exp .exp svg {
+    @apply -rotate-180;
+}
+
+

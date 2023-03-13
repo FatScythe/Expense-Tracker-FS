@@ -1,5 +1,7 @@
 import "./navbar.css";
 import { useUiContext } from "../../context/uiContext";
+import { useUserContext } from "../../context/userContext";
+
 const Navbar = () => {
   const { isLoggedIn } = useUiContext();
 
@@ -14,12 +16,15 @@ const Navbar = () => {
 };
 
 const User = () => {
+  const { getUserFromLocalStorage } = useUserContext();
+
   return (
     <div className='user-nav'>
       <p>Welcome User </p>
       <img
-        src='https://res.cloudinary.com/dg0mkn4ld/image/upload/v1677053900/Expense-tracker-app/avatar_qirbmo.jpg'
-        alt='user'
+        src={getUserFromLocalStorage().user.image}
+        alt={getUserFromLocalStorage().user.name}
+        draggable={false}
       />
     </div>
   );

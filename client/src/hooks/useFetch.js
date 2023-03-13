@@ -1,38 +1,20 @@
 import { useEffect, useState } from "react";
 import { useUserContext } from "../context/userContext";
+import useSWR from "swr";
 
-const useFetch = async (uri) => {
+const useFetch = (url) => {
   const { getUserFromLocalStorage } = useUserContext();
-  const [data, setData] = useState([]);
-  const [pending, setPending] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    fetch(uri, {
+  const fetcher = (url) =>
+    fetch(url, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${getUserFromLocalStorage().user.token}`,
       },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          setPending(false);
-          setError(true);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setData(data);
-        setPending(false);
-      })
-      .catch((err) => {
-        setPending(false);
-        setError(true);
-      });
-  }, [uri]);
-  const h = "hello";
-  console.log(data, pending, error, h, "useFetch hook");
-  return { data, pending, error, h };
+    }).then((res) => res.json());
+
+  const { data, error, isLoading } = useSWR(url, fetcher);
+
+  return { data, pending: isLoading, error };
 };
 
 export default useFetch;

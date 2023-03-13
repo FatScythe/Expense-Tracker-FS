@@ -7,7 +7,7 @@ module.exports = {
         light: "#EFEEE0",
         dark: "#1D2123",
         dark3: "#1c1e1e",
-        dark2: "#A4C7C6",
+        dark2: "#429690",
         primary: "#3671E9",
         secondary: "#FACD66",
         darkglass: "rgba(255,255,255,0.07)",
@@ -23,7 +23,8 @@ module.exports = {
         center: true,
         padding: {
           DEFAULT: "1rem",
-          sx: "0.5rem",
+          none: "0rem",
+          xs: "0.5rem",
           sm: "2rem",
           lg: "4rem",
           xl: "5rem",

@@ -1,5 +1,6 @@
 import "./hero.css";
-import { TransactIcon } from "../../icons/icons";
+import Man from "../../images/hero.png";
+
 const Hero = () => {
   return (
     <section className='hero'>
@@ -17,7 +18,7 @@ const Hero = () => {
         </a>
       </div>
       <div className='img'>
-        <TransactIcon />
+        <img src={Man} alt='man-expense_tracker' />
       </div>
     </section>
   );

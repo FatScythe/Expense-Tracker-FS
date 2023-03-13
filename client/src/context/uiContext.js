@@ -19,6 +19,7 @@ const UiProvider = ({ children }) => {
     return false;
   };
   const [isLoggedIn, setIsLoggedIn] = useState(isUser());
+
   return (
     <UiContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       {children}
