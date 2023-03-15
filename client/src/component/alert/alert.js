@@ -12,7 +12,6 @@ const Alert = () => {
   const { msg, type, show } = alert;
   useEffect(() => {
     const timer = setTimeout(() => {
-      //   setAlert({ ...alert, show: false });
       removeAlert();
     }, 5000);
     return () => clearTimeout(timer);
@@ -21,9 +20,9 @@ const Alert = () => {
     <div
       className={`${
         show
-          ? "top-30 opacity-95"
+          ? "top-38 opacity-95"
           : "opacity-0 transition-opacity duration-500 hidden"
-      } alert-${type} alert text-white w-2/5 py-4 rounded-lg text-center absolute left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center`}
+      } alert-${type} alert text-white w-2/5 py-4 rounded-lg text-center fixed z-40 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center`}
     >
       <p className='basis-4/5'>{msg}</p>
       <button

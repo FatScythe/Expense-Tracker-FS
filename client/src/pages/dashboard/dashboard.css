@@ -60,7 +60,7 @@ main.dashboard .stats {
 }
 
 .dashboard .input {
-    @apply my-2;
+    @apply my-2 px-3;
 }
 
 .dashboard .input .name,

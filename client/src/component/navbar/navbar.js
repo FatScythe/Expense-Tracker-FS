@@ -22,7 +22,7 @@ const User = () => {
 
   return (
     <div className='user-nav'>
-      <p>Welcome User </p>
+      <p>Welcome {getUserFromLocalStorage().user.name}, </p>
       <img
         src={getUserFromLocalStorage().user.image}
         alt={getUserFromLocalStorage().user.name}

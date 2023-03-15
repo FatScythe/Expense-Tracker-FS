@@ -1,5 +1,7 @@
-import { useUserContext } from "../context/userContext";
 import useSWR from "swr";
+
+// context
+import { useUserContext } from "../context/userContext";
 
 const useFetch = (url) => {
   const { getUserFromLocalStorage } = useUserContext();
@@ -11,7 +13,9 @@ const useFetch = (url) => {
       },
     }).then((res) => res.json());
 
-  const { data, error, isLoading } = useSWR(url, fetcher);
+  const { data, error, isLoading } = useSWR(url, fetcher, {
+    refreshInterval: 3000,
+  });
 
   return { data, pending: isLoading, error };
 };

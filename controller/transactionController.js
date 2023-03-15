@@ -29,9 +29,12 @@ const getAllTransactions = async (req, res) => {
   });
 
   if (transactions.length === 0) {
-    res
-      .status(StatusCodes.OK)
-      .json({ balance: 0, income: 0, expense: 0, transactions });
+    res.status(StatusCodes.OK).json({
+      balance: 0,
+      income: 0,
+      expense: 0,
+      transactions,
+    });
     return;
   }
 
@@ -48,6 +51,7 @@ const getAllTransactions = async (req, res) => {
   ]);
 
   res.status(StatusCodes.OK).json({
+    userId: req.user.userId,
     balance: stats.balance,
     income: stats.income,
     expense: stats.expense,
@@ -65,7 +69,7 @@ const deleteTransaction = async (req, res) => {
     createdBy: userId,
   });
   res.status(StatusCodes.OK).json({
-    msg: `Transaction with id: ${transactionId} was deleted successfully`,
+    msg: `deleted successfully`,
   });
 };
 

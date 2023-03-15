@@ -24,7 +24,6 @@ function App() {
       <Navbar />
       <Alert />
       <Routes>
-        {/* conditionally render to main page or Hero */}
         <Route path='/' element={isLoggedIn ? <Dashboard /> : <Hero />} />
         <Route path='/auth' element={<SignUp />} />
       </Routes>

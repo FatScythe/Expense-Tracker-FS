@@ -5,9 +5,9 @@ const UiContext = createContext();
 
 const UiProvider = ({ children }) => {
   const [alert, setAlert] = useState({
-    show: true,
-    type: "success",
-    msg: "lorem ipsium dolor sit success and error",
+    show: false,
+    type: "",
+    msg: "",
   });
 
   const { getUserFromLocalStorage } = useUserContext();

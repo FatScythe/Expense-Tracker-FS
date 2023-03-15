@@ -5,3 +5,7 @@
 .alert-danger {
     @apply bg-red-500;
 }
+
+.alert-gray {
+    @apply bg-black;
+}
