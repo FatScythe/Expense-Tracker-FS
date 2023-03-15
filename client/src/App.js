@@ -1,11 +1,15 @@
+// CSS
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useUiContext } from "./context/uiContext";
 
-import Post from "./hooks/Post";
+// react-router-dom
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// context
+import { useUiContext } from "./context/uiContext";
 
 // Component
 import Navbar from "./component/navbar/navbar";
+import Alert from "./component/alert/alert";
 
 // Pages
 import Hero from "./pages/landing/hero";
@@ -16,8 +20,9 @@ function App() {
   const { isLoggedIn } = useUiContext();
 
   return (
-    <BrowserRouter>
+    <BrowserRouter className='relative'>
       <Navbar />
+      <Alert />
       <Routes>
         {/* conditionally render to main page or Hero */}
         <Route path='/' element={isLoggedIn ? <Dashboard /> : <Hero />} />

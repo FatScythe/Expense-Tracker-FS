@@ -1,0 +1,7 @@
+.alert-success {
+    @apply bg-green-700;
+}
+
+.alert-danger {
+    @apply bg-red-500;
+}

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useUserContext } from "../context/userContext";
 import useSWR from "swr";
 
