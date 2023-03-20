@@ -19,10 +19,8 @@ const Alert = () => {
   return (
     <div
       className={`${
-        show
-          ? "top-38 opacity-95"
-          : "opacity-0 transition-opacity duration-500 hidden"
-      } alert-${type} alert text-white w-2/5 py-4 rounded-lg text-center fixed z-40 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center`}
+        show ? "top-38 opacity-95" : "opacity-0 transition-opacity duration-500"
+      } alert-${type} alert`}
     >
       <p className='basis-4/5'>{msg}</p>
       <button

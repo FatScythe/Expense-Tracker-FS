@@ -50,7 +50,7 @@ const History = (transactions) => {
         <span>Transaction History</span>
         <button
           onClick={() => {
-            handleDelete("http://localhost:5000/api/v1/trans/clear");
+            handleDelete("/api/v1/trans/clear");
           }}
           className='text-xs text-gray-600 hover:text-red-500'
         >
@@ -98,7 +98,7 @@ const Item = ({
         )}
         <button
           onClick={() => {
-            handleDelete("http://localhost:5000/api/v1/trans/", _id);
+            handleDelete("/api/v1/trans/", _id);
           }}
           className='rounded-full hover:bg-red-500 p-2'
         >

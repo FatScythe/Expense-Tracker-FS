@@ -9,6 +9,7 @@ const UiProvider = ({ children }) => {
     type: "",
     msg: "",
   });
+  const [isOptionOpen, setIsOptionOpen] = useState(false);
 
   const { getUserFromLocalStorage } = useUserContext();
   const isUser = () => {
@@ -32,7 +33,15 @@ const UiProvider = ({ children }) => {
 
   return (
     <UiContext.Provider
-      value={{ isLoggedIn, setIsLoggedIn, alert, setAlert, showAlert }}
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        alert,
+        setAlert,
+        showAlert,
+        isOptionOpen,
+        setIsOptionOpen,
+      }}
     >
       {children}
     </UiContext.Provider>

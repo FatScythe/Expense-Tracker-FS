@@ -16,6 +16,7 @@ const UserProvider = ({ children }) => {
     const user = result ? JSON.parse(result) : null;
     return user;
   };
+
   return (
     <userContext.Provider
       value={{

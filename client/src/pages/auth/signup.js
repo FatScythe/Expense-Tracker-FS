@@ -35,7 +35,7 @@ const SignUp = () => {
     }
     // LOGIN
     if (isMember) {
-      const post = await fetch("http://localhost:5000/api/v1/auth/login", {
+      const post = await fetch("/api/v1/auth/login", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -55,7 +55,7 @@ const SignUp = () => {
     }
 
     // REGISTER
-    const post = await fetch("http://localhost:5000/api/v1/auth/register", {
+    const post = await fetch("/api/v1/auth/register", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({

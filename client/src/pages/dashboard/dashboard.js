@@ -13,10 +13,9 @@ import { useUiContext } from "../../context/uiContext";
 import { useUserContext } from "../../context/userContext";
 
 const Dashboard = () => {
-  const { data, pending, error } = useFetch(
-    "http://localhost:5000/api/v1/trans"
-  );
+  const { data, pending, error } = useFetch("/api/v1/trans");
 
+  const [isBlur, setIsBlur] = useState(false);
   if (pending) {
     return (
       <h2 className='max-w-full md:max-w-md mx-auto text-black mt-48 text-center text-xl animate-pulse'>
@@ -28,13 +27,23 @@ const Dashboard = () => {
   if (error) {
     return (
       <h2 className='max-w-full md:max-w-md mx-auto mt-48 text-center text-red-600 text-lg'>
-        Something is wrong, we are currently fixing it, or check internet
-        connection
+        Something went wrong, we are currently fixing it : ( <br /> or Check
+        internet your connection
       </h2>
     );
   }
 
   const { balance, expense, income, transactions } = data;
+
+  let cost = expense.toString();
+  if (cost.startsWith("-")) {
+    cost = Number(cost.split("-")[1]);
+  }
+
+  const handleBlur = () => {
+    setIsBlur(!isBlur);
+  };
+
   return (
     <>
       <main className='dashboard'>
@@ -42,8 +51,10 @@ const Dashboard = () => {
           <div className='balance'>
             <h3>Total balance</h3>
             <div className='cash'>
-              <p>&#8358; {balance}</p>
-              <button>{true ? <EyeClose /> : <EyeOpen />}</button>
+              <p>&#8358; {isBlur ? "XXXXXXXX" : `${balance}`}</p>
+              <button onClick={handleBlur}>
+                {isBlur ? <EyeClose /> : <EyeOpen />}
+              </button>
             </div>
           </div>
           <div className='inc-exp'>
@@ -54,7 +65,9 @@ const Dashboard = () => {
                 </span>
                 Income
               </h3>
-              <h2>&#8358; {income}</h2>
+              <h2 className='text-green-300'>
+                &#8358; {isBlur ? "XXXX" : `${income}`}
+              </h2>
             </div>
             <div className='exp'>
               <h3>
@@ -63,7 +76,9 @@ const Dashboard = () => {
                 </span>
                 Expense
               </h3>
-              <h2>&#8358; {expense}</h2>
+              <h2 className='text-red-500'>
+                &#8358; {isBlur ? "XXXX" : `${cost}`}
+              </h2>
             </div>
           </div>
         </div>
@@ -91,7 +106,7 @@ const Input = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/v1/trans", {
+      const response = await fetch("/api/v1/trans", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -111,6 +126,7 @@ const Input = () => {
       }
 
       showAlert(true, "success", "Added new transaction");
+      setValues({ detail: "", amount: 0 });
     } catch (error) {
       showAlert(true, "danger", "Unable to add new transaction");
       console.log(error);
@@ -128,6 +144,7 @@ const Input = () => {
       </div>
 
       <div className='amount'>
+        <code>For expenses amount are represented in negative i.e -550</code>
         <label htmlFor='amount'>AMOUNT</label>
         <input
           type='number'

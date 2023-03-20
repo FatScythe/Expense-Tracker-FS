@@ -15,10 +15,11 @@ import Alert from "./component/alert/alert";
 import Hero from "./pages/landing/hero";
 import SignUp from "./pages/auth/signup";
 import Dashboard from "./pages/dashboard/dashboard";
+import EditProfile from "./pages/edit/edit";
 
 function App() {
   const { isLoggedIn } = useUiContext();
-
+  // NotFound Component
   return (
     <BrowserRouter className='relative'>
       <Navbar />
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path='/' element={isLoggedIn ? <Dashboard /> : <Hero />} />
         <Route path='/auth' element={<SignUp />} />
+        <Route path='/edit' element={isLoggedIn ? <EditProfile /> : <Hero />} />
       </Routes>
     </BrowserRouter>
   );

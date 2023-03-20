@@ -1,0 +1,45 @@
+.edit {
+    @apply mx-auto w-11/12 md:w-2/3;
+}
+
+.edit .edit-img {
+    @apply flex justify-center items-center flex-col;
+}
+
+.edit .edit-img img {
+    @apply relative w-56 h-56 object-cover hover:drop-shadow-md rounded-full p-1 border-4 border-purple-500 border-b-0 border-r-0; 
+}
+
+.edit .edit-img .upload {
+    @apply flex justify-center items-center gap-4;
+}
+
+.edit .edit-img input[type="file"] {
+    @apply block opacity-70 z-20 top-32;
+}
+
+.edit .edit-img svg {
+    @apply w-10 h-10 cursor-pointer text-cyan-600;
+}
+
+.edit .edit-info .input {
+    @apply my-2 px-3;
+}
+
+.edit .edit-info .input .name,
+.edit .edit-info .input .email,
+.edit .edit-info .input .date {
+    @apply mt-6;
+}
+
+.edit .edit-info .input label {
+    @apply block mb-2 font-semibold;
+}
+
+.edit .edit-info .input input {
+    @apply w-full border-0 outline-none border-b border-b-slate-400 focus:border-b-black;
+}
+
+.edit .edit-info .input button {
+    @apply w-full text-white bg-secondary my-6 p-3 hover:opacity-80 transition-all;
+}

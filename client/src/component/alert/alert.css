@@ -1,3 +1,6 @@
+.alert {
+    @apply text-white capitalize w-11/12 md:w-2/5 py-2 md:py-4 rounded-lg text-center fixed z-40 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center;
+}
 .alert-success {
     @apply bg-green-700;
 }

@@ -55,7 +55,7 @@ module.exports = {
         xs: "320px",
       },
       fontSize: {
-        xs: "0.7rem",
+        xs: "0.9rem",
         xss: "0.9rem",
         sm: ["clamp(1.00rem, calc(0.92rem + 0.39vw), 1.20rem)", "1.4"],
         base: ["clamp(1.13rem, calc(0.98rem + 0.73vw), 1.50rem)", "1.5"],

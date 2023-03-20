@@ -1,13 +1,13 @@
 div.top-nav {
-    @apply relative;
+    @apply relative mb-20;
 }
 
 nav {
-    @apply bg-dark3 text-light p-3 w-full top-0 left-0 fixed z-10;
+    @apply bg-dark3 py-3 text-light p-3 w-full top-0 left-0 fixed z-10;
 }
 
 nav a {
-    @apply w-fit font-semibold text-lg tracking-wide;
+    @apply w-fit text-sm font-semibold md:text-lg tracking-wide;
 }
  
 nav div {
@@ -15,11 +15,43 @@ nav div {
 }
 
 nav div.user-nav {
-    @apply flex justify-between items-center gap-4;
+    @apply text-xs flex justify-between items-center gap-2 md:text-sm md:gap-4;
 }
 
 nav div.user-nav img {
-    @apply w-10 h-10 rounded-full object-contain cursor-pointer;
+    @apply w-8 h-8 md:w-10 md:h-10 rounded-full object-contain cursor-pointer;
+}
+
+nav div.user-nav .option {
+    @apply bg-slate-100 overflow-hidden w-56 text-black absolute top-9 right-10 transition-all duration-500;
+}
+
+nav div.user-nav .title {
+    @apply flex justify-start items-center gap-2 p-2 border-b;
+}
+
+nav div.user-nav .title img {
+    @apply w-10 h-10;
+}
+
+nav div.user-nav ul .links {
+    @apply flex justify-end items-start flex-col py-2 gap-2;
+}
+
+nav div.user-nav ul a {
+    @apply w-11/12 m-2;
+}
+
+nav div.user-nav ul li {
+    @apply flex justify-between items-center font-normal text-xs;
+}
+
+nav div.user-nav ul a:last-child {
+    @apply text-red-400;
+}
+
+nav div.user-nav ul li:hover {
+    @apply font-semibold translate-x-1;
 }
 
 

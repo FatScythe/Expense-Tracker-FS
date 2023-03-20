@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const { changePfp } = require("../controller/pfController");
+const { changePfp, changeUserInfo } = require("../controller/pfController");
 
-router.route("/").post(changePfp);
+router.route("/user").patch(changeUserInfo);
+router.route("/pfp").patch(changePfp);
 
 module.exports = router;

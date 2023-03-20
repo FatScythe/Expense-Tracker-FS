@@ -9,6 +9,7 @@ const changePfp = async (req, res) => {
     throw new BadRequestError("Please upload an image");
   }
   const profilePic = req.files.pfp;
+
   if (!profilePic.mimetype.startsWith("image")) {
     throw new BadRequestError("Please provide an image");
   }
@@ -35,4 +36,19 @@ const changePfp = async (req, res) => {
   res.status(StatusCodes.ACCEPTED).json({ image: { src: result.secure_url } });
 };
 
-module.exports = { changePfp };
+const changeUserInfo = async (req, res) => {
+  const { name, email } = req.body;
+
+  if (!name || !email) {
+    throw new BadRequestError("Please provide name or email");
+  }
+
+  const userInfo = await User.findOneAndUpdate(
+    { _id: req.user.userId },
+    { name, email }
+  );
+
+  res.status(StatusCodes.OK).json({ userInfo });
+};
+
+module.exports = { changePfp, changeUserInfo };
