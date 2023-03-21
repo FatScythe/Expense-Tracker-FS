@@ -12,7 +12,7 @@ import { useUiContext } from "../../context/uiContext";
 const SignUp = () => {
   const { addUserToLocalStorage, removeUserFromLocalStorage } =
     useUserContext();
-  const { setIsLoggedIn } = useUiContext();
+  const { setIsLoggedIn, showAlert } = useUiContext();
   const navigate = useNavigate();
   const initialValues = {
     name: "",
@@ -30,7 +30,7 @@ const SignUp = () => {
     e.preventDefault();
     const { name, email, password, isMember } = values;
     if (!email || !password || (!isMember && !name)) {
-      alert("Please fill all field");
+      showAlert(true, "danger", "Please fill all field");
       return;
     }
     // LOGIN
@@ -45,9 +45,10 @@ const SignUp = () => {
       });
       const response = await post.json();
       if (!post.ok) {
-        // Alert here
-        alert(response.msg);
+        showAlert(true, "danger", response.msg);
+        return;
       }
+      removeUserFromLocalStorage();
       addUserToLocalStorage(response);
       setIsLoggedIn(true);
       navigate("/");
@@ -67,9 +68,15 @@ const SignUp = () => {
 
     const response = await post.json();
     if (!post.ok) {
-      // Alert here
-      alert(response.msg);
+      showAlert(true, "danger", response.msg);
+      return;
     }
+    setValues({
+      ...values,
+      email: values.email,
+      password: values.password,
+      isMember: true,
+    });
     removeUserFromLocalStorage();
   };
 
@@ -116,7 +123,7 @@ const SignUp = () => {
               onClick={() => {
                 setValues({
                   ...values,
-                  email: "testUser@gmail.com",
+                  email: "testUser@test.com",
                   password: "tester",
                 });
               }}

@@ -35,11 +35,16 @@ const History = (transactions) => {
           Authorization: `Bearer ${getUserFromLocalStorage().user.token}`,
         },
       });
+
       const data = await response.json();
+      if (!response.ok) {
+        showAlert(true, "gray", data.msg);
+        return;
+      }
 
       showAlert(true, "success", data.msg);
     } catch (err) {
-      console.log(err);
+      console.error(err);
       showAlert(true, "danger", "unable to delete");
     }
   };

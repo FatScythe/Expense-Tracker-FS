@@ -49,8 +49,8 @@ const EditProfile = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        setIsEditing("false");
         showAlert(true, "danger", data.msg);
+        setIsEditing("false");
         return;
       }
       // localStorage

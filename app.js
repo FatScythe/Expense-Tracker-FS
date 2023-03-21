@@ -3,7 +3,7 @@ require("express-async-errors");
 
 const express = require("express");
 const app = express();
-// const path = require("path");
+const path = require("path");
 const cors = require("cors");
 const { connect, set } = require("mongoose");
 const fileUpload = require("express-fileupload");
@@ -14,11 +14,10 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-// app.use(express.static(path.resolve(__dirname, "./client/public")));
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
 app.use(cors());
-// RATE LIMITER ON AUTH
 
 // Router
 const authRouter = require("./routes/authRoute");
@@ -35,9 +34,9 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/trans", authMW, transRouter);
 app.use("/api/v1/update", authMW, pfRouter);
 
-// app.get("*", async (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "./client/public", "index.html"));
-// });
+app.get("*", async (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 // Middlewares
 app.use(errorHandlerMW);

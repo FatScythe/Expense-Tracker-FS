@@ -24,7 +24,11 @@ const Navbar = () => {
         <div className='container'>
           <a href='/'>Expense Tracker</a>
           {isLoggedIn && (
-            <User setIsLoggedIn={setIsLoggedIn} showAlert={showAlert} />
+            <User
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              showAlert={showAlert}
+            />
           )}
         </div>
       </nav>
@@ -32,7 +36,7 @@ const Navbar = () => {
   );
 };
 
-const User = ({ setIsLoggedIn, showAlert }) => {
+const User = ({ isLoggedIn, setIsLoggedIn, showAlert }) => {
   const { getUserFromLocalStorage, removeUserFromLocalStorage } =
     useUserContext();
   const { isOptionOpen, setIsOptionOpen } = useUiContext();

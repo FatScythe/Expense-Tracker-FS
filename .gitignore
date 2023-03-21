@@ -5,5 +5,4 @@
 
 # Environment variable
 .env
-
-READme.md
+/tmp

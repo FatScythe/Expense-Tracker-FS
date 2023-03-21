@@ -7,3 +7,12 @@
 body {
     @apply font-poppins;
 }
+.not-found {
+    @apply grid place-items-center h-40vh text-red-600 text-lg;
+}
+.not-found a {
+    @apply bg-blue-600 p-4 text-white text-sm font-bold rounded-md hover:drop-shadow-md hover:bg-green-500;
+}
+.not-found + * {
+    display: none;
+}

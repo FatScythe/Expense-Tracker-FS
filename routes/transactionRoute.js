@@ -5,9 +5,10 @@ const {
   deleteTransaction,
   clearAllTransaction,
 } = require("../controller/transactionController");
+const testUser = require("../middleware/testUser");
 
 router.route("/").get(getAllTransactions).post(addTransaction);
-router.route("/clear").delete(clearAllTransaction);
-router.route("/:id").delete(deleteTransaction);
+router.route("/clear").delete(testUser, clearAllTransaction);
+router.route("/:id").delete(testUser, deleteTransaction);
 
 module.exports = router;
