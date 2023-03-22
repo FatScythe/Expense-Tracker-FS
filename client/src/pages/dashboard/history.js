@@ -8,9 +8,6 @@ import { StopSign, Trash } from "../../component/icons/icons";
 import { useUserContext } from "../../context/userContext";
 import { useUiContext } from "../../context/uiContext";
 
-// Hooks
-// import { useDelete } from "../../hooks/useFetch";
-
 const History = (transactions) => {
   const transactionHistory = transactions.transactions;
   const { showAlert } = useUiContext();
@@ -62,13 +59,15 @@ const History = (transactions) => {
           Clear All
         </button>
       </h2>
-      {transactionHistory.map((transaction) => (
-        <Item
-          key={transaction._id}
-          {...transaction}
-          handleDelete={handleDelete}
-        />
-      ))}
+      <div className='items'>
+        {transactionHistory.map((transaction) => (
+          <Item
+            key={transaction._id}
+            {...transaction}
+            handleDelete={handleDelete}
+          />
+        ))}
+      </div>
     </div>
   );
 };
@@ -86,12 +85,18 @@ const Item = ({
   if (cost.startsWith("-")) {
     cost = Number(cost.split("-")[1]);
   }
+  const timestamp = new Date(createdAt).getTime();
+  const day = new Date(timestamp).getDate();
+  let month = new Date(timestamp).getMonth() + 1;
+  const year = new Date(timestamp).getFullYear();
+  month = new Date(timestamp).toLocaleString("default", { month: `short` });
+  const date = `${month} ${day}, ${year}`;
 
   return (
     <div className='item'>
       <h2>
-        <span className='text-lg capitalize'>{detail}</span>
-        <span className='text-xs font-semibold'>{createdAt}</span>
+        <span className='text-sm md:text-lg capitalize'>{detail}</span>
+        <span className='text-xs'>{date}</span>
       </h2>
 
       <p className='gap-5'>

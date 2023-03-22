@@ -13,6 +13,7 @@ import {
   Info,
   Logout,
   Settings,
+  Close,
 } from "../icons/icons";
 
 const Navbar = () => {
@@ -55,7 +56,7 @@ const User = ({ isLoggedIn, setIsLoggedIn, showAlert }) => {
         Welcome {getUserFromLocalStorage().user.name}
       </p>
       <div onClick={() => setIsOptionOpen(!isOptionOpen)}>
-        <HarmburgerMenu />
+        {isOptionOpen ? <Close /> : <HarmburgerMenu />}
         <img
           src={getUserFromLocalStorage().user.image}
           alt={getUserFromLocalStorage().user.name}

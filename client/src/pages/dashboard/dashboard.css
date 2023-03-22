@@ -1,5 +1,5 @@
 main.dashboard {
-    @apply max-w-full md:max-w-md mx-auto text-white mt-24 mb-12;
+    @apply w-11/12 md:max-w-md mx-auto text-white mt-24 mb-12;
 }
 
 main.dashboard .stats {
@@ -44,6 +44,18 @@ main.dashboard .stats {
 
 .dashboard .history .title h2 button {
     @apply text-red-500 hover:text-red-600;
+}
+
+.dashboard .history .items {
+    @apply max-h-72 p-2 overflow-y-scroll overflow-x-hidden;
+}
+
+.dashboard .history .items::-webkit-scrollbar {
+    @apply w-1 h-1;
+}
+
+.dashboard .history .items::-webkit-scrollbar-thumb {
+    @apply bg-dark2 rounded-lg;
 }
 
 .dashboard .history .item,
