@@ -1,16 +1,16 @@
 ## Expense Tracker
 
 
-> #### Description : A full stack web app built with the MERN stack.
+#### Description : A full stack web app built with the MERN stack.
 ___
 
-> #### Link to the live website: [Expense-Tracker](https://expense-tracker-n9i6.onrender.com/ "ET live site")
+### Link to the live website: [Expense-Tracker](https://expense-tracker-n9i6.onrender.com/ "ET live site")
 ___
 
-> #### Figma Inspiration?: [Expense-Tracker Figma Design](https://www.figma.com/file/FA7sQKjG7AAM8gsjEeKi56/%5BFREEBIES%5D-Income-%26-Expense-Tracker-(Community)?node-id=0-1&t=gwXzNhZvIrKfN6OJ-0 "Figma Design")
+#### Figma Inspiration: [Expense-Tracker Figma Design](https://www.figma.com/file/FA7sQKjG7AAM8gsjEeKi56/%5BFREEBIES%5D-Income-%26-Expense-Tracker-(Community)?node-id=0-1&t=gwXzNhZvIrKfN6OJ-0 "Figma Design")
 ___
 
-> ### Tech Used:
+### Tech Used:
 1. React
 2. NodeJS
 3. ExpressJS
@@ -21,11 +21,13 @@ ___
 8. Bcrypt
 9. Express Rate limiter
 10. Render
-11. React-router...
+11. React-router
+12. Tailwind
+13. swr
 ___
 
 
->#### API
+### API
 #### Authentication
 Authentication is enabled in this app using JWT.
 Token is sent with each request and is verified on the server.
